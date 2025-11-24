@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku/widgets/common_widgets.dart';
 import 'package:jurnalku/attitude_notes.dart';
+import 'package:jurnalku/profile.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -10,12 +11,54 @@ class Dashboard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: const MyAppBar(
+      appBar: MyAppBar(
         userName: 'Erdi Eka Fazri',
         kelas: 'XII PPLG 4',
+        onMenuSelected: (value) {
+          if (value == 'Profil') {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfilePage()));
+            return;
+          }
+          if (value == 'Jurnal Pembiasaan' || value == 'Catatan Sikap') {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => const AttitudeNotes()));
+            return;
+          }
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Pilih: $value')));
+        },
       ),
-      bottomNavigationBar: const MyFooter(
-        child: '© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.',
+      // PERBAIKAN: Footer yang benar
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(16.0),
+        color: Colors.grey.shade50,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              '© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.',
+              style: TextStyle(
+                color: Colors.grey.shade600,
+                fontSize: 12,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle, color: Colors.grey.shade600, size: 14),
+                const SizedBox(width: 6),
+                Text(
+                  'Validated schema',
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -613,11 +656,24 @@ class Dashboard extends StatelessWidget {
           ),
           trailing: const Icon(Icons.chevron_right, color: Colors.black54),
           onTap: () {
-            if (title == 'Catatan Sikap') {
+            if (title == 'Profil') {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 0)));
+              return;
+            }
+            if (title == 'Portofolio') {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 1)));
+              return;
+            }
+            if (title == 'Sertifikat') {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 2)));
+              return;
+            }
+            if (title == 'Jurnal Pembiasaan' || title == 'Catatan Sikap') {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const AttitudeNotes()),
               );
+              return;
             }
           },
         );

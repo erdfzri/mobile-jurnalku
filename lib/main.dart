@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku/dashboard.dart';
 import 'package:jurnalku/attitude_notes.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
@@ -28,6 +32,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -163,13 +168,13 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Footer (dark text to show on white)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 28.0),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0, bottom: 28.0),
                     child: Column(
                       children: [
                         Text('© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.', style: TextStyle(color: Colors.black54, fontSize: 12), textAlign: TextAlign.center),
-                        const SizedBox(height: 6),
-                        Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: const [
+                        SizedBox(height: 6),
+                        Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
                           Icon(Icons.check_circle, color: Colors.black54, size: 14),
                           SizedBox(width: 6),
                           Text('Validated schema', style: TextStyle(color: Colors.black54, fontSize: 12)),

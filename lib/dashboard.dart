@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku/jurnal_pembiasaan.dart';
+import 'package:jurnalku/user_guide.dart';
 import 'package:jurnalku/widgets/common_widgets.dart';
 import 'package:jurnalku/attitude_notes.dart';
 import 'package:jurnalku/profile.dart';
+import 'package:jurnalku/witness_request.dart';
+import 'package:jurnalku/learning_progress.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -16,14 +20,22 @@ class Dashboard extends StatelessWidget {
         kelas: 'XII PPLG 4',
         onMenuSelected: (value) {
           if (value == 'Profil') {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfilePage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const ProfilePage()));
             return;
           }
-          if (value == 'Jurnal Pembiasaan' || value == 'Catatan Sikap') {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => const AttitudeNotes()));
+          if (value == 'Catatan Sikap') {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const AttitudeNotes()));
             return;
           }
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Pilih: $value')));
+          if (value == 'Panduan Penggunaan') {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const UserGuide()));
+            return;
+          }
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Pilih: $value')));
         },
       ),
       // PERBAIKAN: Footer yang benar
@@ -71,8 +83,8 @@ class Dashboard extends StatelessWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
                         colors: [Color(0xFF113F8C), Color(0xFF2E59B8)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -312,6 +324,13 @@ class Dashboard extends StatelessWidget {
                           icon: Icons.warning_amber_outlined,
                           title: 'Catatan Sikap',
                           subtitle: 'Lihat catatan sikap dan perilaku.',
+                          iconColor: Colors.blue,
+                        ),
+                        const Divider(height: 1),
+                        _buildMenuItem(
+                          icon: Icons.help_outline,
+                          title: 'Panduan Penggunaan',
+                          subtitle: 'Lihat panduan penggunaan aplikasi.',
                           iconColor: Colors.blue,
                         ),
                       ],
@@ -633,7 +652,8 @@ class Dashboard extends StatelessWidget {
     return Builder(
       builder: (context) {
         return ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           leading: Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -657,21 +677,58 @@ class Dashboard extends StatelessWidget {
           trailing: const Icon(Icons.chevron_right, color: Colors.black54),
           onTap: () {
             if (title == 'Profil') {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 0)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfilePage(initialTab: 0)));
               return;
             }
             if (title == 'Portofolio') {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 1)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfilePage(initialTab: 1)));
               return;
             }
             if (title == 'Sertifikat') {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(initialTab: 2)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfilePage(initialTab: 2)));
               return;
             }
-            if (title == 'Jurnal Pembiasaan' || title == 'Catatan Sikap') {
+            if (title == 'Catatan Sikap') {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const AttitudeNotes()),
+              );
+              return;
+            }
+            if (title == 'Permintaan Saksi') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const WitnessRequest()),
+              );
+              return;
+            }
+            if (title == 'Progress') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LearningProgress()),
+              );
+              return;
+            }
+              if (title == 'Panduan Penggunaan') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UserGuide()),
+              );
+              return;
+            }
+            if (title == 'Jurnal Pembiasaan') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const JurnalPembiasaan()),
               );
               return;
             }

@@ -65,13 +65,13 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   left: 20,
                   top: 100,
                   child: CircleAvatar(
                     radius: 44,
                     backgroundColor: Colors.white,
-                    backgroundImage: const NetworkImage('https://picsum.photos/seed/profile/200'),
+                    backgroundImage: NetworkImage('https://picsum.photos/seed/profile/200'),
                   ),
                 ),
                 Positioned(

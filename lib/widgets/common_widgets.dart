@@ -79,78 +79,78 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             itemBuilder: (context) => <PopupMenuEntry<String>>[
               // top group
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Dashboard',
                 child: ListTile(
-                  leading: const Icon(Icons.dashboard_outlined),
-                  title: const Text('Dashboard'),
+                  leading: Icon(Icons.dashboard_outlined),
+                  title: Text('Dashboard'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Profil',
                 child: ListTile(
-                  leading: const Icon(Icons.person_outline),
-                  title: const Text('Profil'),
+                  leading: Icon(Icons.person_outline),
+                  title: Text('Profil'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Jelajahi',
                 child: ListTile(
-                  leading: const Icon(Icons.explore_outlined),
-                  title: const Text('Jelajahi'),
+                  leading: Icon(Icons.explore_outlined),
+                  title: Text('Jelajahi'),
                 ),
               ),
               const PopupMenuDivider(),
               // second group
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Jurnal Pembiasaan',
                 child: ListTile(
-                  leading: const Icon(Icons.menu_book_outlined),
-                  title: const Text('Jurnal Pembiasaan'),
+                  leading: Icon(Icons.menu_book_outlined),
+                  title: Text('Jurnal Pembiasaan'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Permintaan Saksi',
                 child: ListTile(
-                  leading: const Icon(Icons.person_search_outlined),
-                  title: const Text('Permintaan Saksi'),
+                  leading: Icon(Icons.person_search_outlined),
+                  title: Text('Permintaan Saksi'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Progress',
                 child: ListTile(
-                  leading: const Icon(Icons.show_chart),
-                  title: const Text('Progress'),
+                  leading: Icon(Icons.show_chart),
+                  title: Text('Progress'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Catatan Sikap',
                 child: ListTile(
-                  leading: const Icon(Icons.warning_amber_outlined),
-                  title: const Text('Catatan Sikap'),
+                  leading: Icon(Icons.warning_amber_outlined),
+                  title: Text('Catatan Sikap'),
                 ),
               ),
               const PopupMenuDivider(),
               // bottom group
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Panduan Penggunaan',
                 child: ListTile(
-                  leading: const Icon(Icons.menu_book),
-                  title: const Text('Panduan Penggunaan'),
+                  leading: Icon(Icons.menu_book),
+                  title: Text('Panduan Penggunaan'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Pengaturan Akun',
                 child: ListTile(
-                  leading: const Icon(Icons.settings_outlined),
-                  title: const Text('Pengaturan Akun'),
+                  leading: Icon(Icons.settings_outlined),
+                  title: Text('Pengaturan Akun'),
                 ),
               ),
-              PopupMenuItem<String>(
+              const PopupMenuItem<String>(
                 value: 'Log Out',
                 child: ListTile(
-                  leading: const Icon(Icons.logout_outlined),
-                  title: const Text('Log Out'),
+                  leading: Icon(Icons.logout_outlined),
+                  title: Text('Log Out'),
                 ),
               ),
             ],

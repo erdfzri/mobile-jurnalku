@@ -12,6 +12,7 @@ class _AttitudeNotesState extends State<AttitudeNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const MyAppBar(
         userName: 'Erdi Eka Fazri',
         kelas: 'XII PPLG 4',
@@ -286,10 +287,10 @@ class _AttitudeNotesState extends State<AttitudeNotes> {
                         bottomRight: Radius.circular(8),
                       ),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(
                             Icons.check_circle_outline,
                             color: Colors.grey,
